@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* ================= DARK MODE VARIABLES ================= */
+/* DARK MODE ADDED */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111827;
+  --card-color: #f3f4f6;
+  --border-color: #e5e7eb;
+}
+
+/* DARK MODE ADDED */
+.dark {
+  --bg-color: #0f172a;
+  --text-color: #f1f5f9;
+  --card-color: #1e293b;
+  --border-color: #334155;
+}
+
+/* DARK MODE ADDED */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* ================= EXISTING ================= */
+
+.cl-avatarBox {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.arrows {
+  height: 80px;
+  width: 80px;
+  margin: 1px;
+}
+
+/* DARK MODE ADDED */
+input {
+  background-color: var(--card-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  accent-color: #eab308;
+}
