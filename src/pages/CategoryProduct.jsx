@@ -14,11 +14,6 @@ const CategoryProduct = () => {
 
   const getFilterData = async () => {
     try {
-      // const res = await axios.get(
-      //    `https://kolzsticks.github.io/Free-Ecommerce-Products-Api/main/products/category?type=${category}.json`,
-      // );
-      // const data = res.data.products;
-
       const res = await axios.get(
         "https://kolzsticks.github.io/Free-Ecommerce-Products-Api/main/products.json",
       );
@@ -32,10 +27,10 @@ const CategoryProduct = () => {
 
       const updatedProducts = filteredProducts.map((item) => ({
         ...item,
-        discount: (item.id % 30) + 10, // same logic as SingleProduct
+        discount: (item.id % 30) + 10, 
       }));
 
-      // ✅ USE UPDATED DATA (ONLY CHANGE)
+      
       setSearchData(updatedProducts);
     } catch (error) {
       console.log(error);

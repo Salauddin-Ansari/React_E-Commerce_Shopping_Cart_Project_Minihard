@@ -5,52 +5,91 @@ export const CartContext = createContext(null);
 
 export const CartProvider = ({ children }) => {
   const [cartItem, setCartItem] = useState([]);
+
+  // Add To Cart
   const addToCart = (product) => {
     const itemInCart = cartItem.find((item) => item.id === product.id);
+
     if (itemInCart) {
-      // Increase quantity if already in cart
-      const updateCart = cartItem.map((item) =>
+      const updatedCart = cartItem.map((item) =>
         item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
           : item,
       );
-      setCartItem(updateCart);
-      toast.success("Product Quantity increased");
+
+      setCartItem(updatedCart);
+      toast.success("Product quantity increased");
     } else {
-      // Add new item with quantity
-      setCartItem([...cartItem, { ...product, quantity: 1 }]);
-      toast.success("Product is added to your cart!");
+      setCartItem([
+        ...cartItem,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ]);
+
+      toast.success("Product added to cart");
     }
   };
 
-  const updateQuantity = (cartItem, id, action) => {
-    setCartItem(
-      cartItem
-        .map((item) => {
-          if (item.id === id) {
-            let newUnit = item.quantity;
-            if (action === "increase") {
-              newUnit = newUnit + 1;
-              toast.success("Quantity is increased");
-            } else if (action === "decrease") {
-              newUnit = newUnit - 1;
-              toast.success("Quantity is decreased");
-            }
-            return newUnit > 0 ? { ...item, quantity: newUnit } : null;
+  // Update Quantity
+  const updateQuantity = (id, action) => {
+    const updatedCart = cartItem
+      .map((item) => {
+        if (item.id === id) {
+          let newQuantity = item.quantity;
+
+          if (action === "increase") {
+            newQuantity += 1;
           }
-          return item;
-        })
-        .filter((item) => item != null), // remove item quantity 0
-    );
+
+          if (action === "decrease") {
+            newQuantity -= 1;
+          }
+
+          return newQuantity > 0
+            ? {
+                ...item,
+                quantity: newQuantity,
+              }
+            : null;
+        }
+
+        return item;
+      })
+      .filter(Boolean);
+
+    setCartItem(updatedCart);
+
+    if (action === "increase") {
+      toast.success("Quantity increased");
+    }
+
+    if (action === "decrease") {
+      toast.success("Quantity decreased");
+    }
   };
 
+  // Delete Item
   const deleteItem = (id) => {
-    setCartItem(cartItem.filter((item) => item.id !== id));
-    toast.success("Product removed from your Cart");
+    const updatedCart = cartItem.filter((item) => item.id !== id);
+
+    setCartItem(updatedCart);
+    toast.success("Product removed from cart");
   };
+
   return (
     <CartContext.Provider
-      value={{ cartItem, setCartItem, addToCart, updateQuantity, deleteItem }}
+      value={{
+        cartItem,
+        setCartItem,
+        addToCart,
+        updateQuantity,
+        deleteItem,
+      }}
     >
       {children}
     </CartContext.Provider>

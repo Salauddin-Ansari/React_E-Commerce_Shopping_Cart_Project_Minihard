@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-/* ================= DARK MODE VARIABLES ================= */
+/*DARK MODE VARIABLES*/
+
 /* DARK MODE ADDED */
 :root {
   --bg-color: #ffffff;
@@ -24,7 +25,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* ================= EXISTING ================= */
 
 .cl-avatarBox {
   width: 2.5rem;

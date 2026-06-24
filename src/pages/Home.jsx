@@ -8,8 +8,8 @@ const Home = () => {
     <div
       className="
       overflow-hidden 
-      bg-[var(--bg-color)]  // DARK MODE ADDED
-      text-[var(--text-color)] // DARK MODE ADDED
+      bg-[var(--bg-color)]  
+      text-[var(--text-color)] 
     "
     >
       <Carousel />

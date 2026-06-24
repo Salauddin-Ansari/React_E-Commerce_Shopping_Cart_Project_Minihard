@@ -17,10 +17,6 @@ const SingleProduct = () => {
         "https://kolzsticks.github.io/Free-Ecommerce-Products-Api/main/products.json",
       );
 
-      // console.log("URL id:", id);
-      // console.log("First API id:", res.data[0].id);
-
-      //match id properly (string safe)
       const product = res.data.find((item) => item.id == id);
 
       if (!product) {
@@ -28,10 +24,8 @@ const SingleProduct = () => {
         return;
       }
 
-      // ADD DISCOUNT
       const updatedProduct = {
         ...product,
-        // discount: Math.floor(Math.random() * 30) + 10, // 10–40%
         discount: (product.id % 30) + 10,
       };
 
@@ -45,7 +39,6 @@ const SingleProduct = () => {
     getSingleProduct();
   }, [id]);
 
-  // LOADING
   if (!singleProduct) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -56,7 +49,6 @@ const SingleProduct = () => {
     );
   }
 
-  // PRICE CALCULATION
   const originalPrice = Math.round(
     singleProduct.priceCents +
       (singleProduct.priceCents * singleProduct.discount) / 100,
@@ -68,7 +60,7 @@ const SingleProduct = () => {
 
       <div className="max-w-6xl mx-auto md:p-6 grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* IMAGE */}
-        <div className="w-full">
+        <div className="w-full flex justify-center">
           <img
             src={singleProduct.image}
             alt={singleProduct.name}
@@ -78,11 +70,14 @@ const SingleProduct = () => {
 
         {/* DETAILS */}
         <div className="flex flex-col gap-6">
-          <h1 className="md:text-3xl text-xl font-bold text-gray-800">
+          <h1
+            className="md:text-3xl text-xl font-bold"
+            style={{ color: "var(--text-color)" }}
+          >
             {singleProduct.name}
           </h1>
 
-          <div className="text-gray-700">
+          <div style={{ color: "var(--text-color)" }} className="opacity-80">
             {(singleProduct.brand || "").toUpperCase()}{" "}
             {(singleProduct.category || "").toUpperCase()}{" "}
             {singleProduct.model || ""}
@@ -90,41 +85,60 @@ const SingleProduct = () => {
 
           <p className="text-xl text-yellow-600 font-bold">
             ₹{singleProduct.priceCents}
-            <span className="line-through text-gray-700 ml-2">
+            <span
+              className="line-through ml-2"
+              style={{ color: "var(--text-color)" }}
+            >
               ₹{originalPrice}
             </span>
             <span
-              className="bg-gradient-to-r from-yellow-400 to-yellow-900 
-  hover:bg-gradient-to-r hover:from-yellow-900 hover:to-yellow-400 
-  transition-all duration-300 transform hover:scale-105 text-white px-4 py-2 rounded-full ml-2"
+              className="
+                bg-gradient-to-r from-yellow-400 to-yellow-900
+                hover:bg-gradient-to-r hover:from-yellow-900 hover:to-yellow-400
+                transition-all duration-300
+                text-white px-4 py-2 rounded-full ml-2
+              "
             >
               {singleProduct.discount}% OFF
             </span>
           </p>
 
-          <p className="text-gray-600">
+          <p style={{ color: "var(--text-color)" }} className="opacity-80">
             {singleProduct.description || "No description available"}
           </p>
 
           {/* QUANTITY */}
           <div className="flex items-center gap-4">
-            <label className="text-sm font-medium text-gray-700">
+            <label
+              className="text-sm font-medium"
+              style={{ color: "var(--text-color)" }}
+            >
               Quantity
             </label>
+
             <input
               type="number"
               min={1}
               defaultValue={1}
-              className="w-20 border border-gray-300 rounded-lg px-3 py-1"
+              className="w-20 rounded-lg px-3 py-1 border"
+              style={{
+                backgroundColor: "var(--card-color)",
+                color: "var(--text-color)",
+                borderColor: "var(--border-color)",
+              }}
             />
           </div>
 
           {/* BUTTON */}
           <button
             onClick={() => addToCart(singleProduct)}
-            className="px-6 flex items-center justify-center gap-2 py-2 text-lg bg-gradient-to-r from-yellow-400 to-yellow-900 
-  hover:bg-gradient-to-r hover:from-yellow-900 hover:to-yellow-400 
-  transition-all duration-300 transform hover:scale-105 text-white rounded-md cursor-pointer"
+            className="
+              px-6 flex items-center justify-center gap-2 py-2 text-lg
+              bg-gradient-to-r from-yellow-400 to-yellow-900
+              hover:bg-gradient-to-r hover:from-yellow-900 hover:to-yellow-400
+              transition-all duration-300 transform hover:scale-105
+              text-white rounded-md cursor-pointer
+            "
           >
             <IoCartOutline className="w-6 h-6" />
             Add to Cart
