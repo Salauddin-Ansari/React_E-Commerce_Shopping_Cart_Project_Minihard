@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../assets/Banner.jpg";
+import Banner from "../assets/banner.jpg";
 import { Link } from "react-router-dom";
 
 const MidBanner = () => {
