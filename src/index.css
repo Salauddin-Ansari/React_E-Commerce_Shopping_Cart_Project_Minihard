@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /*DARK MODE VARIABLES*/
 
@@ -24,7 +25,6 @@ body {
   color: var(--text-color);
   transition: all 0.3s ease;
 }
-
 
 .cl-avatarBox {
   width: 2.5rem;
