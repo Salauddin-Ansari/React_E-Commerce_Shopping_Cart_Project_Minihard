@@ -13,8 +13,8 @@ const ProductCard = ({ product }) => {
       ml-1 relative rounded-2xl cursor-pointer p-2 h-max
       transition-all hover:scale-105 hover:shadow-2xl
 
-      bg-[var(--card-color)] // DARK MODE ADDED
-      border border-[var(--border-color)] // DARK MODE ADDED
+      bg-[var(--card-color)] 
+      border border-[var(--border-color)] 
     "
     >
       <div
@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
         className="
         my-1 text-lg font-bold
 
-        text-[var(--text-color)] // DARK MODE ADDED
+        text-[var(--text-color)] 
       "
       >
         ₹{product.priceCents}
@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
         bg-gradient-to-r from-yellow-400 to-yellow-900 
         hover:from-yellow-900 hover:to-yellow-400 
         transition-all duration-300 transform hover:scale-105 
-        px-3 py-2 md:text-lg text-xl rounded-md text-white w-full
+        px-3 py-2 md:text-lg text-base rounded-md text-white w-full
         flex gap-1 items-center justify-center font-semibold
       "
       >
