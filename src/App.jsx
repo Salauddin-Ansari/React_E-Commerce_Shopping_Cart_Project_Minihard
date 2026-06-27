@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
-
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -83,7 +82,6 @@ const App = () => {
 
           <Route path="/contact" element={<Contact />} />
 
-          
           <Route
             path="/cart"
             element={<Cart location={location} getLocation={getLocation} />}
