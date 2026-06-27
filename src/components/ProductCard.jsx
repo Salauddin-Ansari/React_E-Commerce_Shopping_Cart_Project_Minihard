@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
         className="
         w-full h-[200px] flex items-center justify-center
 
-        bg-[var(--bg-color)] // DARK MODE ADDED
+        bg-[var(--bg-color)] 
       "
       >
         <img
@@ -52,7 +52,7 @@ const ProductCard = ({ product }) => {
         bg-gradient-to-r from-yellow-400 to-yellow-900 
         hover:from-yellow-900 hover:to-yellow-400 
         transition-all duration-300 transform hover:scale-105 
-        px-3 py-2 text-lg rounded-md text-white w-full
+        px-3 py-2 md:text-lg text-xl rounded-md text-white w-full
         flex gap-1 items-center justify-center font-semibold
       "
       >
